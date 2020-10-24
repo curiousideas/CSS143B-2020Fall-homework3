@@ -121,4 +121,5 @@ public class Problem1Test {
             assertEquals(expect[i], actual);
         }
     }
+
 }
