@@ -1,5 +1,7 @@
 package Problem2;
 
+import java.awt.*;
+
 // all functions assume using dummy node
 public class SingleLinkedList {
     // do not add member variables
@@ -12,19 +14,66 @@ public class SingleLinkedList {
 
     // copy constructor
     public SingleLinkedList(SingleLinkedList list) {
-        // homework
+        if(list == null) {
+            return;
+        }
+        ListNode p1 = new ListNode();
+        head = p1;
+
+        ListNode p2 = list.head.next;
+
+        while(p2 != null) {
+            p1.next = new ListNode(p2.val);
+            p1 = p1.next;
+            p2 = p2.next;
+        }
+        size = list.size;
     }
 
     public int removeAll(int valueToRemove) {
-        // homework
-        // in-place
-        return -1; // place holder
+        if(head == null) {
+            return 0;
+        }
+        while (head != null && head.val == valueToRemove) {
+            head = head.next;
+        }
+        ListNode cur = head;
+        int count = 0;
+        while (cur != null && cur.next != null) {
+            if(cur.next.val == valueToRemove) {
+                cur.next = cur.next.next;
+                count++;
+                size--;
+            } else {
+                cur = cur.next;
+            }
+        }
+        return count;
     }
 
     // reverse the linked list nodes iteratively (no recursion)
     public void reverse() {
-        // homework
-        // in-place
+        if (size <= 1) {
+            return;
+        }
+        // Remove dummy node from front
+        head = head.next;
+        ListNode wah = head.next;
+        ListNode tmp = null;
+        ListNode prev = head;
+        while (wah != null) {
+            tmp = wah.next;
+            wah.next = prev;
+            if (prev == head) {
+                prev.next = null;
+            }
+            prev = wah;
+            wah = tmp;
+        }
+        // Add dummy node to front
+        head = new ListNode();
+        // Append reversed list after dummy node
+        head.next = prev;
     }
 
     // do not change any function below
