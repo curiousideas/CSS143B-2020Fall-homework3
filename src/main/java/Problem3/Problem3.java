@@ -17,6 +17,5 @@ public class Problem3 {
         while (stack.peek() != null) {
             print.println(stack.pop().val);
         }
-        //print.println("hello world");
     }
 }

@@ -1,15 +1,16 @@
 package Problem1;
 
 public class MinStack extends ArrayStack<Integer> {
-    private Integer[] data;
-    private int size;
+
     // can only use Stack interface and ArrayStack from this folder
     // do not use Java Stack
-    ArrayStack<Integer> stack = new ArrayStack(6);
-    ArrayStack<Integer> minVal = new ArrayStack(6);
+    ArrayStack<Integer> stack;
+    ArrayStack<Integer> minVal;
 
     public MinStack(int size) {
         super(size);
+        this.stack = new ArrayStack<Integer>(size);
+        this.minVal = new ArrayStack<Integer>(size);
     }
 
     @Override
