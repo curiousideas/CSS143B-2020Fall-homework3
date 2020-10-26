@@ -8,7 +8,7 @@ public class ValidParentheses {
         } else if (str.length() % 2 != 0) {
             return false;
         }
-        ArrayStack<Character> arrayStack = new ArrayStack(10);
+        ArrayStack<Character> arrayStack = new ArrayStack(str.length());
         for(char c : str.toCharArray()) {
             if(c == '(' || c == '[' || c == '{') {
                 arrayStack.push(c);
